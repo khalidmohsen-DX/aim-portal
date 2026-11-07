@@ -3,40 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIM - Mid AI Assistant</title>
+    <title>AIM - Rameda AI Medical Assistant</title>
+    <!-- Premium Arabic Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- The Top Header -->
-    <div class="header">
-        <h1>AIM | المساعد الطبي الذكي </h1>
-    </div>
+    <div class="app-container">
+        <!-- Top Branding Header -->
+        <header class="rameda-header">
+            <div class="logo-area">
+                <h1>rameda</h1>
+                <span class="slogan">Quality For All</span>
+            </div>
+            <div class="app-title">AIM Medical Assistant</div>
+        </header>
 
-    <!-- The Main Chat Interface -->
-    <div class="chat-wrapper">
-        <!-- AIM's Profile Picture (You will replace 'aim-pic.jpg' with her actual photo later) -->
-        <div class="profile-section">
-            <img src="https://via.placeholder.com/100" alt="AIM Profile" class="aim-avatar">
-            <h3>أهلاً بيك يا دكتور، أنا AIM</h3>
-            <p>إزاي أقدر أساعدك النهاردة في معلومات X-Tension أو X-Tension Plus؟</p>
+        <!-- AIM Profile & Welcome -->
+        <div class="profile-card">
+            <!-- Replace the src link below with your actual hosted image of AIM -->
+            <img src="https://via.placeholder.com/120x120.png?text=AIM" alt="AIM" class="avatar">
+            <h2>أهلاً بيك يا دكتور، أنا AIM</h2>
+            <p>مساعدتك الطبية والتسويقية لعائلة X-Tension. جاهزة للرد على استفساراتك أو محاكاة مكالمة دعائية.</p>
         </div>
 
-        <!-- The Quick Action Buttons -->
-        <div class="quick-buttons">
-            <button onclick="sendQuickMessage('محاكاة مكالمة دعائية (مريضة سكر وضغط 65 سنة)')">محاكاة مكالمة دكتور</button>
-            <button onclick="sendQuickMessage('مقارنة إكس-تنشن مع بيتا-بلوكر')">جدول المنافسين</button>
-            <button onclick="sendQuickMessage('نتائج دراسة IRMA 2 و IDNT')">الدراسات الإكلينيكية</button>
+        <!-- Smart Quick Actions -->
+        <div class="quick-actions">
+            <button onclick="sendQuickMessage('محاكاة مكالمة دعائية: مريضة 65 سنة عندها سكر وضغط')">محاكاة مكالمة دكتور</button>
+            <button onclick="sendQuickMessage('ما هي مميزات إكس-تنشن مقارنة بـ Beta-blockers؟')">مقارنة المنافسين</button>
+            <button onclick="sendQuickMessage('اشرح لي نتائج دراسة IRMA 2 و IDNT')">الدراسات الإكلينيكية</button>
         </div>
 
-        <!-- The Chat Box -->
-        <div class="chat-box" id="chat-box">
-            <!-- Messages will appear here -->
+        <!-- Chat Interface -->
+        <div class="chat-container" id="chat-box">
+            <!-- Messages will load here -->
         </div>
 
-        <!-- The Typing Area -->
-        <div class="input-area">
-            <input type="text" id="user-input" placeholder="اكتب سؤالك هنا...">
-            <button onclick="sendMessage()">إرسال</button>
+        <!-- Input Area -->
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="اكتب سؤالك أو السيناريو هنا..." onkeypress="handleKeyPress(event)">
+            <button class="send-btn" onclick="sendMessage()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
         </div>
     </div>
 
