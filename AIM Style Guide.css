@@ -1,119 +1,196 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2907
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+/* Base Styles & Typography */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-\f0\fs24 \cf0 /* General Page Styling */\
-body \{\
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\
-    background-color: #f4f4f9;\
-    margin: 0;\
-    padding: 0;\
-\}\
-\
-/* Rameda Navy Blue Header */\
-.header \{\
-    background-color: #1B365D; \
-    color: white;\
-    text-align: center;\
-    padding: 15px;\
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);\
-\}\
-\
-/* Main Container */\
-.chat-wrapper \{\
-    max-width: 600px;\
-    margin: 30px auto;\
-    background: white;\
-    border-radius: 10px;\
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);\
-    padding: 20px;\
-\}\
-\
-/* AIM Profile Section */\
-.profile-section \{\
-    text-align: center;\
-    margin-bottom: 20px;\
-\}\
-.aim-avatar \{\
-    width: 100px;\
-    height: 100px;\
-    border-radius: 50%;\
-    border: 3px solid #1B365D;\
-\}\
-\
-/* Quick Action Buttons */\
-.quick-buttons \{\
-    display: flex;\
-    gap: 10px;\
-    justify-content: center;\
-    margin-bottom: 20px;\
-    flex-wrap: wrap;\
-\}\
-.quick-buttons button \{\
-    background-color: #e0e7ff;\
-    border: 1px solid #1B365D;\
-    color: #1B365D;\
-    padding: 8px 15px;\
-    border-radius: 20px;\
-    cursor: pointer;\
-    font-weight: bold;\
-\}\
-.quick-buttons button:hover \{\
-    background-color: #1B365D;\
-    color: white;\
-\}\
-\
-/* Chat History Box */\
-.chat-box \{\
-    height: 300px;\
-    border: 1px solid #ddd;\
-    border-radius: 8px;\
-    padding: 15px;\
-    overflow-y: auto;\
-    background-color: #fafafa;\
-    margin-bottom: 15px;\
-    display: flex;\
-    flex-direction: column;\
-    gap: 10px;\
-\}\
-\
-/* Message Bubbles */\
-.message \{\
-    padding: 10px 15px;\
-    border-radius: 15px;\
-    max-width: 75%;\
-\}\
-.user-msg \{\
-    background-color: #1B365D;\
-    color: white;\
-    align-self: flex-start;\
-\}\
-.aim-msg \{\
-    background-color: #e2e8f0;\
-    color: #333;\
-    align-self: flex-end;\
-\}\
-\
-/* Bottom Input Area */\
-.input-area \{\
-    display: flex;\
-    gap: 10px;\
-\}\
-.input-area input \{\
-    flex: 1;\
-    padding: 12px;\
-    border: 1px solid #ccc;\
-    border-radius: 8px;\
-\}\
-.input-area button \{\
-    background-color: #1B365D;\
-    color: white;\
-    border: none;\
-    padding: 12px 20px;\
-    border-radius: 8px;\
-    cursor: pointer;\
-    font-weight: bold;\
-\}}
+/* Main Application Container */
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+@media (min-width: 650px) {
+    .app-container {
+        height: 90vh;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+}
+
+/* Rameda Corporate Header */
+.rameda-header {
+    background-color: #1B365D;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.logo-area h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.logo-area .slogan {
+    font-size: 0.7rem;
+    color: #a3b8cc;
+}
+.app-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(255,255,255,0.1);
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+/* AIM Profile Card */
+.profile-card {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+    border-bottom: 1px solid #eee;
+}
+.avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #1B365D;
+    padding: 2px;
+    box-shadow: 0 4px 10px rgba(27, 54, 93, 0.2);
+    margin-bottom: 10px;
+}
+.profile-card h2 {
+    font-size: 1.2rem;
+    color: #1B365D;
+    font-weight: 700;
+}
+.profile-card p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Quick Action Buttons */
+.quick-actions {
+    display: flex;
+    gap: 8px;
+    padding: 15px;
+    overflow-x: auto;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+.quick-actions::-webkit-scrollbar {
+    display: none;
+}
+.quick-actions button {
+    flex-shrink: 0;
+    background: #eef2f6;
+    border: 1px solid #d1d9e6;
+    color: #1B365D;
+    font-family: 'Cairo', sans-serif;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.quick-actions button:hover {
+    background: #1B365D;
+    color: #fff;
+    border-color: #1B365D;
+}
+
+/* Chat Area */
+.chat-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.message {
+    max-width: 80%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease;
+}
+.user-msg {
+    background-color: #1B365D;
+    color: white;
+    align-self: flex-start;
+    border-radius: 15px 15px 0 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.aim-msg {
+    background-color: #ffffff;
+    color: #333;
+    align-self: flex-end;
+    border-radius: 15px 15px 15px 0;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Input Area */
+.input-container {
+    padding: 15px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.input-container input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.input-container input:focus {
+    border-color: #1B365D;
+}
+.send-btn {
+    background: #1B365D;
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(27, 54, 93, 0.3);
+    transition: transform 0.2s;
+}
+.send-btn:hover {
+    transform: scale(1.05);
+}
