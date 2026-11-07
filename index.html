@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIM - Rameda AI Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- The Top Header -->
+    <div class="header">
+        <h1>AIM | المساعد الطبي الذكي - راميدا</h1>
+    </div>
+
+    <!-- The Main Chat Interface -->
+    <div class="chat-wrapper">
+        <!-- AIM's Profile Picture (You will replace 'aim-pic.jpg' with her actual photo later) -->
+        <div class="profile-section">
+            <img src="https://via.placeholder.com/100" alt="AIM Profile" class="aim-avatar">
+            <h3>أهلاً بيك يا دكتور، أنا AIM</h3>
+            <p>إزاي أقدر أساعدك النهاردة في معلومات X-Tension أو X-Tension Plus؟</p>
+        </div>
+
+        <!-- The Quick Action Buttons -->
+        <div class="quick-buttons">
+            <button onclick="sendQuickMessage('محاكاة مكالمة دعائية (مريضة سكر وضغط 65 سنة)')">محاكاة مكالمة دكتور</button>
+            <button onclick="sendQuickMessage('مقارنة إكس-تنشن مع بيتا-بلوكر')">جدول المنافسين</button>
+            <button onclick="sendQuickMessage('نتائج دراسة IRMA 2 و IDNT')">الدراسات الإكلينيكية</button>
+        </div>
+
+        <!-- The Chat Box -->
+        <div class="chat-box" id="chat-box">
+            <!-- Messages will appear here -->
+        </div>
+
+        <!-- The Typing Area -->
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="اكتب سؤالك هنا...">
+            <button onclick="sendMessage()">إرسال</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
