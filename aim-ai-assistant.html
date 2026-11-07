@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramada Medical AI Assistant | AIM</title>
+    <!-- Google Fonts: Plus Jakarta Sans (English) & Cairo / Readex Pro (Arabic) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for utility support -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- =================================================================
+         FILE 2 OF 3: style.css (Premium Light Sky Blue & Executive UI)
+         ================================================================= -->
+    <style id="aim-style-css">
+        :root {
+            --sky-lightest: #f0f9ff;
+            --sky-soft: #e0f2fe;
+            --sky-medium: #bae6fd;
+            --sky-vibrant: #7dd3fc;
+            --sky-accent: #38bdf8;
+            --sky-deep: #0284c7;
+            --rameda-navy: #0f2942;
+            --rameda-dark: #071626;
+            --surface-glass: rgba(255, 255, 255, 0.82);
+            --border-sky: rgba(56, 189, 248, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--sky-lightest);
+            color: var(--rameda-navy);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .font-en {
+            font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+        }
+
+        /* =========================================================
+           1. LIGHT SKY BLUE LUXURY LOGIN GATE
+           ========================================================= */
+        .login-gate {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: 
+                radial-gradient(circle at 15% 20%, rgba(125, 211, 252, 0.65) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(56, 189, 248, 0.55) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, #e0f2fe 0%, #bae6fd 55%, #7dd3fc 100%);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .login-gate.unlocked {
+            opacity: 0;
+            transform: scale(1.04);
+            pointer-events: none;
+        }
+
+        /* Ambient Floating Sky Orbs */
+        .sky-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(55px);
+            opacity: 0.75;
+            pointer-events: none;
+            animation: floatOrb 12s infinite ease-in-out alternate;
+        }
+        .orb-1 {
+            width: 480px;
+            height: 480px;
+            background: #ffffff;
+            top: -120px;
+            right: -100px;
+        }
+        .orb-2 {
+            width: 420px;
+            height: 420px;
+            background: #38bdf8;
+            bottom: -140px;
+            left: -100px;
+            animation-delay: -5s;
+        }
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: #bae6fd;
+            top: 40%;
+            left: 15%;
+            animation-delay: -2s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-30px) scale(1.08); }
+        }
+
+        /* Subtle Medical Grid Pattern Overlay */
+        .medical-grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+            pointer-events: none;
+        }
+
+        /* Frosted Glass Login Card */
+        .login-card {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 680px;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 36px;
+            padding: 56px 48px;
+            text-align: center;
+            box-shadow: 
+                0 30px 70px -15px rgba(2, 132, 199, 0.22),
+                0 0 0 1px rgba(56, 189, 248, 0.25),
+                inset 0 2px 4px rgba(255, 255, 255, 0.95);
+            animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(28px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Animated Pulse Badge */
+        .brand-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 20px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(224, 242, 254, 0.95), rgba(186, 230, 253, 0.9));
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            color: #0369a1;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.18);
+        }
+
+        /* BIG, BIG BOLD HERO TITLE */
+        .hero-login-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2.35rem, 5.2vw, 4rem);
+            font-weight: 900;
+            line-height: 1.06;
+            letter-spacing: -0.035em;
+            color: #07192b;
+            margin-bottom: 18px;
+            text-shadow: 0 2px 20px rgba(56, 189, 248, 0.18);
+        }
+
+        .hero-login-title .sky-gradient-text {
+            background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #0369a1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .hero-slogan {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+            font-weight: 700;
+            color: #0284c7;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .hero-slogan::before,
+        .hero-slogan::after {
+            content: "";
+            height: 2px;
+            width: 36px;
+            background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+            border-radius: 2px;
+        }
+
+        /* Password Input Field */
+        .pin-input-wrapper {
+            position: relative;
+            max-width: 420px;
+            margin: 0 auto 18px auto;
+        }
+
+        .pin-input {
+            width: 100%;
+            padding: 20px 24px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 0.18em;
+            color: #07192b;
+            background: rgba(240, 249, 255, 0.9);
+            border: 2px solid #7dd3fc;
+            border-radius: 20px;
+            outline: none;
+            transition: all 0.25s ease;
+            box-shadow: inset 0 2px 6px rgba(2, 132, 199, 0.06);
+        }
+
+        .pin-input::placeholder {
+            letter-spacing: 0.04em;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        .pin-input:focus {
+            background: #ffffff;
+            border-color: #0284c7;
+            box-shadow: 0 0 0 5px rgba(56, 189, 248, 0.28), 0 10px 25px rgba(2, 132, 199, 0.12);
+            transform: translateY(-1px);
+        }
+
+        .unlock-btn {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px 28px;
+            border-radius: 20px;
+            border: none;
+            background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 14px 30px -6px rgba(2, 132, 199, 0.45);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .unlock-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 38px -8px rgba(2, 132, 199, 0.6);
+            filter: brightness(1.04);
+        }
+
+        .unlock-btn:active {
+            transform: translateY(0);
+        }
+
+        .shake-error {
+            animation: shakeAnim 0.45s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shakeAnim {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* =========================================================
+           2. PREMIUM AI CHATBOT WORKSPACE
+           ========================================================= */
+        .workspace-shell {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            background: linear-gradient(160deg, #f0f9ff 0%, #e0f2fe 50%, #f8fafc 100%);
+            overflow: hidden;
+        }
+
+        /* Clinical Sidebar */
+        .clinical-sidebar {
+            width: 310px;
+            background: rgba(255, 255, 255, 0.86);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(56, 189, 248, 0.28);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            z-index: 30;
+        }
+
+        @media (max-width: 900px) {
+            .clinical-sidebar {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                transform: translateX(100%);
+                box-shadow: -15px 0 40px rgba(7, 25, 43, 0.15);
+            }
+            .clinical-sidebar.open {
+                transform: translateX(0);
+            }
+        }
+
+        /* Main Chat Column */
+        .chat-main-stage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glass Header */
+        .stage-header {
+            height: 74px;
+            padding: 0 28px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 20;
+        }
+
+        /* Chat Stream Container */
+        .chat-stream {
+            flex: 1;
+            overflow-y: auto;
+            padding: 28px 24px 36px 24px;
+            scroll-behavior: smooth;
+        }
+
+        .chat-stream::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-stream::-webkit-scrollbar-thumb {
+            background: rgba(56, 189, 248, 0.35);
+            border-radius: 999px;
+        }
+
+        .chat-inner-max {
+            max-width: 840px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        /* Message Bubbles */
+        .msg-row {
+            display: flex;
+            gap: 14px;
+            width: 100%;
+            animation: msgSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes msgSlideUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .msg-row.user {
+            flex-direction: row-reverse;
+        }
+
+        .avatar-badge {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .avatar-ai {
+            background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+            color: white;
+            box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.45);
+        }
+
+        .avatar-user {
+            background: #0f2942;
+            color: #7dd3fc;
+            box-shadow: 0 6px 16px rgba(15, 41, 66, 0.2);
+        }
+
+        .bubble-card {
+            max-width: 84%;
+            padding: 18px 22px;
+            border-radius: 22px;
+            line-height: 1.75;
+            font-size: 0.98rem;
+            position: relative;
+        }
+
+        .bubble-ai {
+            background: #ffffff;
+            color: #0f2942;
+            border: 1px solid rgba(56, 189, 248, 0.32);
+            border-top-right-radius: 6px;
+            box-shadow: 0 10px 28px -8px rgba(2, 132, 199, 0.1);
+        }
+
+        .bubble-user {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff;
+            border-top-left-radius: 6px;
+            box-shadow: 0 10px 25px -6px rgba(2, 132, 199, 0.35);
+        }
+
+        /* Scenario Suggestion Cards */
+        .scenario-card {
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: 20px;
+            padding: 18px;
+            text-align: right;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 6px 20px -6px rgba(2, 132, 199, 0.08);
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-4px);
+            background: #ffffff;
+            border-color: #0284c7;
+            box-shadow: 0 16px 32px -10px rgba(2, 132, 199, 0.22);
+        }
+
+        /* Floating Input Composer Dock */
+        .composer-dock {
+            padding: 16px 24px 22px 24px;
+            background: linear-gradient(180deg, rgba(240, 249, 255, 0) 0%, rgba(224, 242, 254, 0.85) 35%, rgba(224, 242, 254, 0.98) 100%);
+        }
+
+        .composer-box {
+            max-width: 840px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 2px solid rgba(56, 189, 248, 0.45);
+            border-radius: 24px;
+            padding: 8px 10px 8px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 16px 40px -10px rgba(2, 132, 199, 0.18);
+            transition: all 0.25s ease;
+        }
+
+        .composer-box:focus-within {
+            border-color: #0284c7;
+            box-shadow: 0 20px 45px -10px rgba(2, 132, 199, 0.28), 0 0 0 4px rgba(56, 189, 248, 0.2);
+        }
+
+        .composer-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0f2942;
+            padding: 10px 8px;
+        }
+
+        .composer-send-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            border: none;
+            background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 18px -4px rgba(2, 132, 199, 0.45);
+        }
+
+        .composer-send-btn:hover {
+            transform: scale(1.05);
+            filter: brightness(1.05);
+        }
+
+        /* Bouncing Typing Dots */
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 4px;
+        }
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #0284c7;
+            animation: pulseBounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes pulseBounce {
+            0%, 80%, 100% { transform: scale(0.4); opacity: 0.4; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        /*Formatted Tables inside AI Responses */
+        .ai-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.88rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #bae6fd;
+        }
+        .ai-table th {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-weight: 800;
+            padding: 10px 12px;
+            text-align: right;
+        }
+        .ai-table td {
+            padding: 9px 12px;
+            border-top: 1px solid #e0f2fe;
+            background: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =================================================================
+         SCREEN 1: LIGHT SKY BLUE LOGIN GATE (BIG, BOLD TYPOGRAPHY)
+         ================================================================= -->
+    <div id="login-screen" class="login-gate" dir="ltr">
+        <!-- Ambient Sky Blue Orbs & Grid -->
+        <div class="sky-orb orb-1"></div>
+        <div class="sky-orb orb-2"></div>
+        <div class="sky-orb orb-3"></div>
+        <div class="medical-grid-overlay"></div>
+
+        <div class="login-card" id="login-card-box">
+            <!-- Top Pill Badge -->
+            <div class="brand-pill">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-ping"></span>
+                <span>RAMEDA PHARMACEUTICALS • QUALITY FOR ALL</span>
+            </div>
+
+            <!-- BIG, BIG BOLD TITLE AS REQUESTED -->
+            <h1 class="hero-login-title">
+                RAMADA
+                <span class="sky-gradient-text">MEDICAL AI ASSISTANT</span>
+            </h1>
+
+            <!-- Slogan Underneath -->
+            <p class="hero-slogan">Innovation is the Future</p>
+
+            <!-- Password Input Box -->
+            <div class="pin-input-wrapper">
+                <input 
+                    type="password" 
+                    id="access-pin" 
+                    class="pin-input font-en" 
+                    placeholder="Enter Access Password..." 
+                    autocomplete="off"
+                    onkeypress="handleLoginKeyPress(event)"
+                >
+            </div>
+
+            <!-- Unlock Portal Button -->
+            <button class="unlock-btn" onclick="verifyLogin()">
+                <span>ENTER AI PORTAL</span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                </svg>
+            </button>
+
+            <!-- Error Message -->
+            <div id="error-msg" class="hidden mt-4 text-sm font-bold text-red-600 bg-red-50 border border-red-200 rounded-xl py-2.5 px-4 max-w-md mx-auto">
+                Invalid Access Password. Please enter the authorized Rameda PIN (2026).
+            </div>
+
+            <!-- Subtle Footer Info -->
+            <div class="mt-8 pt-5 border-t border-sky-200/70 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold text-sky-800/75 font-en">
+                <span>🔒 Protected MVP Access Gate (PIN: 2026)</span>
+                <button onclick="openExportModal()" class="underline hover:text-sky-950 font-bold cursor-pointer">
+                    📦 Copy 3 GitHub Files (HTML/CSS/JS)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================
+         SCREEN 2: ULTRA-PREMIUM AI MEDICAL CHATBOT WORKSPACE
+         ================================================================= -->
+    <div id="chat-screen" class="workspace-shell">
+        
+        <!-- RIGHT SIDEBAR: Clinical Modules, Product Cards & GitHub Exporter -->
+        <aside id="sidebar-panel" class="clinical-sidebar">
+            <!-- Brand Header -->
+            <div class="p-5 border-b border-sky-200/70 flex items-center justify-between bg-gradient-to-l from-sky-50 to-white">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-700 text-white font-black text-lg flex items-center justify-center shadow-md shadow-sky-400/30 font-en">
+                        AIM
+                    </div>
+                    <div>
+                        <div class="font-black text-base text-slate-900 leading-tight font-en">rameda</div>
+                        <div class="text-xs font-bold text-sky-600">X-Tension® Neural Hub</div>
+                    </div>
+                </div>
+                <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-xl bg-sky-100 text-sky-800">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Sidebar Quick Clinical Modules -->
+            <div class="p-4 flex-1 overflow-y-auto space-y-5">
+                <!-- New Chat Button -->
+                <button onclick="resetChatSession()" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 hover:brightness-105 transition">
+                    <span>+ بدء محادثة طبية جديدة</span>
+                </button>
+
+                <!-- Section 1: Detailing Roleplay Scenarios -->
+                <div>
+                    <div class="text-xs font-extrabold text-sky-700 uppercase tracking-wider mb-2.5 px-1">
+                        🎭 سيناريوهات المكالمات الدعائية
+                    </div>
+                    <div class="space-y-2">
+                        <button onclick="sendQuickMessage('مريضة 65 سنة، متشخصة جديد بـ hypertension الدرجة 2 (160/95) وعندها Type 2 Diabetes وبداية اعتلال كلى microalbuminuria. إزاي أقدم إكس-تنشن بلس للدكتور؟')" class="w-full text-right p-3 rounded-xl bg-sky-50/80 hover:bg-sky-100 border border-sky-200/80 text-xs font-bold text-slate-800 transition">
+                            1. مريضة 65 سنة (سكر وضغط + Microalbuminuria)
+                        </button>
+                        <button onclick="sendQuickMessage('مريض 50 سنة نشيط بياخد Beta Blocker وضغطه لسه 145/90 وبيشتكي من إرهاق Asthenia وضعف في الوظيفة الجنسية. إزاي أقنع الدكتور بالتحويل لإكس-تنشن؟')" class="w-full text-right p-3 rounded-xl bg-sky-50/80 hover:bg-sky-100 border border-sky-200/80 text-xs font-bold text-slate-800 transition">
+                            2. مريض 50 سنة (إرهاق Asthenia مع Beta-Blocker)
+                        </button>
+                        <button onclick="sendQuickMessage('مريض 58 سنة عنده ضغط درجة 1 (145/85) بدون أمراض مصاحبة وقلقان من الآثار الجانبية. إزاي أقدم إكس-تنشن 150 مجم كـ Monotherapy؟')" class="w-full text-right p-3 rounded-xl bg-sky-50/80 hover:bg-sky-100 border border-sky-200/80 text-xs font-bold text-slate-800 transition">
+                            3. مريض 58 سنة (ضغط درجة 1 بدون مضاعفات)
+                        </button>
+                        <button onclick="sendQuickMessage('مريضة 70 سنة ضغطها 155/90 رغم العلاج المركب وعندها تاريخ نقرس Gout. إزاي أرد على قلق الدكتور من الـ HCTZ؟')" class="w-full text-right p-3 rounded-xl bg-sky-50/80 hover:bg-sky-100 border border-sky-200/80 text-xs font-bold text-slate-800 transition">
+                            4. مريضة 70 سنة (ضغط غير متحكم فيه + نقرس)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 2: Clinical Trials & Competitors -->
+                <div>
+                    <div class="text-xs font-extrabold text-sky-700 uppercase tracking-wider mb-2.5 px-1">
+                        📊 الدراسات والمقارنات التنافسية
+                    </div>
+                    <div class="space-y-2">
+                        <button onclick="sendQuickMessage('اشرح لي بالتفصيل نتائج دراسات IRMA 2 و IDNT و COSIMA الخاصة بحماية الكلى وتفوق إكس-تنشن.')" class="w-full text-right p-3 rounded-xl bg-white hover:bg-sky-50 border border-sky-200 text-xs font-bold text-slate-800 transition flex items-center justify-between">
+                            <span>نتائج دراسات IRMA 2 & IDNT & COSIMA</span>
+                            <span class="text-sky-600 font-en">70% RRR</span>
+                        </button>
+                        <button onclick="sendQuickMessage('اعرض لي جدول مقارنة أسعار وفعالية إكس-تنشن وإكس-تنشن بلس ضد المنافسين (Tareg, Aprovel, Atacand, Candalkan, Erastapex).')" class="w-full text-right p-3 rounded-xl bg-white hover:bg-sky-50 border border-sky-200 text-xs font-bold text-slate-800 transition flex items-center justify-between">
+                            <span>جدول مقارنة الأسعار والمنافسين</span>
+                            <span class="text-emerald-600 font-en">28 Tabs</span>
+                        </button>
+                        <button onclick="sendQuickMessage('لو الدكتور قالي: كل الـ ARBs شبه بعض، ليه أكتب إكس-تنشن؟ أرد عليه إزاي؟')" class="w-full text-right p-3 rounded-xl bg-white hover:bg-sky-50 border border-sky-200 text-xs font-bold text-slate-800 transition">
+                            الرد على اعتراض: "كل الـ ARBs شبه بعض"
+                        </button>
+                        <button onclick="sendQuickMessage('هل إكس-تنشن محتاج تعديل جرعة في مرضى الكلى أو الكبد أو كبار السن؟ واشرح الـ Pharmacokinetics.')" class="w-full text-right p-3 rounded-xl bg-white hover:bg-sky-50 border border-sky-200 text-xs font-bold text-slate-800 transition">
+                            الـ Pharmacokinetics ومرضى الكلى والكبد
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Section 3: Official Pricing Reference Card -->
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-sky-950 text-white shadow-lg">
+                    <div class="text-xs font-extrabold text-sky-300 mb-2 flex items-center justify-between">
+                        <span>عبوات راميدا الاقتصادية</span>
+                        <span class="px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-200 text-[10px] font-en">28 Scored Tabs</span>
+                    </div>
+                    <div class="space-y-1.5 text-xs">
+                        <div class="flex justify-between py-1 border-b border-white/10">
+                            <span>X-Tension 150 mg</span>
+                            <span class="font-bold text-sky-300 font-en">76 EGP</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-white/10">
+                            <span>X-Tension 300 mg</span>
+                            <span class="font-bold text-sky-300 font-en">89.75 EGP</span>
+                        </div>
+                        <div class="flex justify-between py-1 border-b border-white/10">
+                            <span>X-Tension Plus 150/12.5</span>
+                            <span class="font-bold text-emerald-300 font-en">102 EGP</span>
+                        </div>
+                        <div class="flex justify-between pt-1">
+                            <span>X-Tension Plus 300/12.5</span>
+                            <span class="font-bold text-emerald-300 font-en">108 EGP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Footer: API Key Vault & 3-File Exporter -->
+            <div class="p-4 border-t border-sky-200/70 bg-sky-50/60 space-y-2">
+                <button onclick="openApiModal()" class="w-full py-2.5 px-3 rounded-xl bg-white hover:bg-sky-100 border border-sky-300 text-xs font-bold text-sky-900 flex items-center justify-between transition">
+                    <span>🔑 ربط مفتاح Gemini API (اختياري)</span>
+                    <span id="api-status-badge" class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-en">Built-in Ready</span>
+                </button>
+                <button onclick="openExportModal()" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center justify-center gap-2 transition">
+                    <span>📋 نسخ ملفات GitHub الـ 3 (HTML/CSS/JS)</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CHAT STAGE -->
+        <main class="chat-main-stage">
+            <!-- Top Glass Header -->
+            <header class="stage-header">
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleSidebar()" class="lg:hidden p-2.5 rounded-xl bg-sky-100 text-sky-800 font-bold">
+                        ☰
+                    </button>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h2 class="font-extrabold text-slate-900 text-base sm:text-lg font-en">
+                                Ramada Medical AI Assistant
+                            </h2>
+                            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-100 text-sky-700 border border-sky-300 flex items-center gap-1.5 font-en">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                AIM 3.0 Online
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-500 font-semibold">
+                            خبير عائلة X-Tension & X-Tension Plus • إرشادات ESC 2018/2023 • دراسات COSIMA & IRMA 2 & IDNT
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="lockPortal()" class="px-3.5 py-2 rounded-xl bg-sky-50 hover:bg-sky-100 border border-sky-200 text-xs font-bold text-sky-800 transition font-en">
+                        🔒 Lock Screen
+                    </button>
+                </div>
+            </header>
+
+            <!-- Scrollable Chat Messages Area -->
+            <div class="chat-stream" id="chat-box">
+                <div class="chat-inner-max" id="chat-inner">
+                    
+                    <!-- Welcome Hero State -->
+                    <div id="welcome-hero" class="text-center py-6 px-4">
+                        <div class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-sky-500 via-sky-400 to-blue-600 mx-auto mb-4 flex items-center justify-center shadow-xl shadow-sky-400/35 text-white text-3xl font-black font-en">
+                            AIM
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mb-2">
+                            أهلاً بيك يا دكتور، أنا <span class="text-sky-600 font-en">AIM</span>
+                        </h3>
+                        <p class="text-sm sm:text-base text-slate-600 max-w-xl mx-auto font-medium leading-relaxed mb-6">
+                            المساعد الطبي الذكي لشركة راميدا (<span class="font-en font-bold text-sky-700">Quality For All</span>). جاهزة للرد الفوري على كل استفسارات <span class="font-en font-bold">X-Tension & X-Tension Plus</span> أو تدريبك على سيناريوهات العيادة.
+                        </p>
+
+                        <!-- 4 Premium Suggestion Cards -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-3xl mx-auto text-right">
+                            <div onclick="sendQuickMessage('مريضة 65 سنة، متشخصة جديد بـ hypertension الدرجة 2 (160/95) وعندها Type 2 Diabetes وبداية اعتلال كلى microalbuminuria. إزاي أقدم إكس-تنشن بلس للدكتور؟')" class="scenario-card">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800">محاكاة مكالمة دكتور #1</span>
+                                    <span class="text-lg">🩺</span>
+                                </div>
+                                <div class="font-bold text-slate-900 text-sm mb-1">مريضة 65 سنة (سكر وضغط + Microalbuminuria)</div>
+                                <div class="text-xs text-slate-500">ربط X-Tension Plus بدراسة IRMA 2 (70% RRR) كخطوة علاجية أولى</div>
+                            </div>
+
+                            <div onclick="sendQuickMessage('مريض 50 سنة نشيط بياخد Beta Blocker وضغطه لسه 145/90 وبيشتكي من إرهاق Asthenia وضعف في الوظيفة الجنسية. إزاي أقنع الدكتور بالتحويل لإكس-تنشن؟')" class="scenario-card">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800">محاكاة مكالمة دكتور #2</span>
+                                    <span class="text-lg">⚡</span>
+                                </div>
+                                <div class="font-bold text-slate-900 text-sm mb-1">مريض 50 سنة نشيط يعاني من Beta-Blocker</div>
+                                <div class="text-xs text-slate-500">التغلب على الـ Asthenia وتحسين جودة الحياة والأمان مع الربو والسكر</div>
+                            </div>
+
+                            <div onclick="sendQuickMessage('اشرح لي بالتفصيل نتائج دراسات IRMA 2 و IDNT و COSIMA الخاصة بحماية الكلى وتفوق إكس-تنشن.')" class="scenario-card">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">الأدلة الإكلينيكية</span>
+                                    <span class="text-lg">🧬</span>
+                                </div>
+                                <div class="font-bold text-slate-900 text-sm mb-1">ملخص دراسات COSIMA و IRMA 2 و IDNT</div>
+                                <div class="text-xs text-slate-500">الأرقام الإحصائية ونسب الـ RRR ضد الـ Valsartan والـ Amlodipine</div>
+                            </div>
+
+                            <div onclick="sendQuickMessage('اعرض لي جدول مقارنة أسعار وفعالية إكس-تنشن وإكس-تنشن بلس ضد المنافسين (Tareg, Aprovel, Atacand, Candalkan, Erastapex).')" class="scenario-card">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">تحليل المنافسين والأسعار</span>
+                                    <span class="text-lg">🛡️</span>
+                                </div>
+                                <div class="font-bold text-slate-900 text-sm mb-1">مقارنة الأسعار والـ Receptor Affinity</div>
+                                <div class="text-xs text-slate-500">مقارنة عبوة راميدا 28 قرص مقابل عبوات الـ 14 قرص للمنافسين</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Chat Messages Appear Here -->
+                    <div id="messages-list" class="space-y-5"></div>
+
+                </div>
+            </div>
+
+            <!-- Bottom Floating Input Dock -->
+            <div class="composer-dock">
+                <div class="composer-box">
+                    <input 
+                        type="text" 
+                        id="user-input" 
+                        class="composer-input" 
+                        placeholder="اسأل AIM عن أي سيناريو طبي، دراسة إكلينيكية، أو مقارنة منافسين..." 
+                        onkeypress="handleChatKeyPress(event)"
+                    >
+                    <button class="composer-send-btn" onclick="sendMessage()" title="إرسال">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <div class="text-center mt-2 text-[11px] font-semibold text-sky-900/60 font-en">
+                    Ramada Medical AI Assistant • Powered by Rameda X-Tension® Scientific Knowledge Engine
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- =================================================================
+         MODAL 1: OPTIONAL GEMINI API KEY VAULT
+         ================================================================= -->
+    <div id="api-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white border-2 border-sky-200 rounded-3xl max-w-md w-full p-6 shadow-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-black text-lg text-slate-900">🔑 إعداد مفتاح Gemini API</h3>
+                <button onclick="closeApiModal()" class="text-slate-400 hover:text-slate-700 font-bold">✕</button>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                المساعد الذكي مزود بالفعل بقاعدة بيانات <strong>X-Tension & X-Tension Plus</strong> المدمجة بالكامل ويعمل فوراً بدون مفتاح. إذا أردت ربطه بمفتاح Google AI Studio الخاص بك، الصقه هنا:
+            </p>
+            <input 
+                type="password" 
+                id="gemini-key-input" 
+                dir="ltr"
+                placeholder="AIzaSy..." 
+                class="w-full p-3.5 rounded-xl border border-sky-300 bg-sky-50/50 text-sm font-mono mb-4 outline-none focus:border-sky-600"
+            >
+            <div class="flex gap-2 justify-end">
+                <button onclick="closeApiModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">إلغاء</button>
+                <button onclick="saveApiKey()" class="px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold">حفظ وتفعيل</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================
+         MODAL 2: 3-FILE GITHUB EXPORTER (index.html, style.css, script.js)
+         ================================================================= -->
+    <div id="export-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 hidden items-center justify-center p-4" dir="ltr">
+        <div class="bg-white border-2 border-sky-300 rounded-3xl max-w-3xl w-full p-6 shadow-2xl flex flex-col max-h-[88vh]">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+                <div>
+                    <h3 class="font-black text-lg text-slate-900 font-en">📦 Copy Your 3 Files for GitHub Pages</h3>
+                    <p class="text-xs text-slate-500 font-en">Click any tab below and hit "Copy Code" to paste directly into your GitHub repository files.</p>
+                </div>
+                <button onclick="closeExportModal()" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 font-bold">✕</button>
+            </div>
+
+            <!-- File Selector Tabs -->
+            <div class="flex gap-2 my-4">
+                <button onclick="switchExportTab('html')" id="tab-btn-html" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-sky-600 text-white font-en">1. index.html</button>
+                <button onclick="switchExportTab('css')" id="tab-btn-css" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-sky-100 text-sky-900 font-en">2. style.css</button>
+                <button onclick="switchExportTab('js')" id="tab-btn-js" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-sky-100 text-sky-900 font-en">3. script.js</button>
+                <button onclick="copyExportCode()" id="copy-export-btn" class="ml-auto px-5 py-2 rounded-xl text-xs font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white font-en">
+                    📋 Copy This File
+                </button>
+            </div>
+
+            <textarea id="export-code-area" readonly class="w-full flex-1 p-4 rounded-2xl bg-slate-900 text-sky-200 font-mono text-xs leading-relaxed outline-none resize-none"></textarea>
+        </div>
+    </div>
+
+    <!-- =================================================================
+         FILE 3 OF 3: script.js (Login Gate + Rameda Medical Brain + API)
+         ================================================================= -->
+    <script id="aim-script-js">
+        // --- STATE VARIABLES ---
+        let userGeminiKey = "";
+        let currentExportTab = "html";
+        let hasGreeted = false;
+
+        // --- 1. SECURE LOGIN GATE (PIN: 2026) ---
+        function verifyLogin() {
+            const pinInput = document.getElementById("access-pin");
+            const errorMsg = document.getElementById("error-msg");
+            const loginCard = document.getElementById("login-card-box");
+            const loginScreen = document.getElementById("login-screen");
+
+            if (pinInput.value.trim() === "2026") {
+                errorMsg.classList.add("hidden");
+                loginScreen.classList.add("unlocked");
+
+                // Automatically trigger welcome pop-up message once inside
+                if (!hasGreeted) {
+                    hasGreeted = true;
+                    setTimeout(() => {
+                        appendAIMessage(
+                            `<strong>I'm here to help! 👋 أهلاً بيك يا دكتور في بوابة راميدا الذكية.</strong><br><br>` +
+                            `أنا <strong>AIM</strong>، مساعدتك الطبية والتسويقية لعائلة <strong>X-Tension® & X-Tension Plus®</strong>.<br>` +
+                            `تقدر تختار أي سيناريو من الكروت اللي فوق أو القائمة الجانبية، أو تكتب سؤالك مباشرة وهجاوبك بالأدلة الإكلينيكية (<strong>COSIMA, IRMA 2, IDNT</strong>) والردود المعتمدة باللهجة المصرية.`
+                        );
+                    }, 650);
+                }
+            } else {
+                errorMsg.classList.remove("hidden");
+                loginCard.classList.remove("shake-error");
+                void loginCard.offsetWidth; // Reflow for animation
+                loginCard.classList.add("shake-error");
+            }
+        }
+
+        function handleLoginKeyPress(e) {
+            if (e.key === "Enter") verifyLogin();
+        }
+
+        function lockPortal() {
+            const loginScreen = document.getElementById("login-screen");
+            document.getElementById("access-pin").value = "";
+            loginScreen.classList.remove("unlocked");
+        }
+
+        function toggleSidebar() {
+            document.getElementById("sidebar-panel").classList.toggle("open");
+        }
+
+        // --- 2. RAMEDA X-TENSION SCIENTIFIC KNOWLEDGE BASE ---
+        const RAMEDA_SYSTEM_PROMPT = `You are AIM (Ramada Medical AI Assistant), the official AI Medical & Sales Training Assistant for Rameda Pharmaceuticals ("Quality For All").
+Respond in natural Egyptian Arabic while keeping medical terms in English.
+Key Facts:
+- X-Tension 150 mg (Irbesartan): 76 EGP (28 scored tablets, once daily)
+- X-Tension 300 mg (Irbesartan): 89.75 EGP (28 scored tablets, once daily)
+- X-Tension Plus 150/12.5 mg (Irbesartan/HCTZ): 102 EGP (28 scored tablets, once daily)
+- X-Tension Plus 300/12.5 mg (Irbesartan/HCTZ): 108 EGP (28 scored tablets, once daily)
+- PK: Highest bioavailability among ARBs (60-80%, unaffected by food), Tmax 1.5-2 hrs, Half-life 11-15 hrs, lowest Kd / highest AT1 affinity (>8500-fold for AT1 over AT2). Dual excretion: 80% biliary/fecal, 20% renal. NO dose adjustment in hepatic, renal (even hemodialysis), or elderly patients.
+- COSIMA Study: X-Tension Plus 150/12.5 superior to Valsartan/HCTZ 80/12.5 in Home BP Monitoring (Morning SBP -11.9 vs -9.6 mmHg, Evening SBP -12.4 vs -10.3 mmHg).
+- IRMA 2 (Early Diabetic Nephropathy - Microalbuminuria): 590 T2DM patients over 2 years; Irbesartan 300mg achieved 70% RRR vs placebo (p=0.0004).
+- IDNT (Late/Overt Diabetic Nephropathy): 1715 T2DM patients over 2.6 years; Irbesartan 300mg achieved 23% RRR vs Amlodipine 10mg (p=0.006) and 20% RRR vs placebo (p=0.02).`;
+
+        function generateExpertRamedaResponse(query) {
+            const q = query.toLowerCase();
+
+            // Case 1: 65yo Diabetic Female with Microalbuminuria
+            if (q.includes("65") || (q.includes("مريضة") && q.includes("سكر")) || q.includes("microalbuminuria")) {
+                return `<strong>🩺 سيناريو المكالمة الدعائية (مريضة 65 سنة — ضغط درجة 2 + سكر + Microalbuminuria):</strong><br><br>` +
+                `<strong>1. الافتتاحية (Opening):</strong><br>` +
+                `"مساء الخير يا دكتور، كنت حابب أسلط الضوء النهاردة على أهمية التحكم المبكر والشامل في الضغط، خصوصاً في مرضى السكر اللي هما عرضة لمضاعفات في الكلى والقلب."<br><br>` +
+                `<strong>2. ربط الدواء بملف المريضة (Linking):</strong><br>` +
+                `"بالنسبة لمريضة عمرها 65 سنة وعندها <strong>Hypertension Grade 2 (160/95)</strong> وسكر وبداية اعتلال كلوي (<strong>Microalbuminuria</strong>)، محتاجين علاج مش بس ينزل الضغط بفعالية، لأ كمان يحمي الكلى. <strong>إكس-تنشن بلس (Irbesartan/HCTZ)</strong> اختيار ممتاز كخطوة علاجية أولى (<strong>Initial SPC</strong>) حسب توصيات <strong>ESC Guidelines</strong> (لأن الدمج بيدي خفض للضغط أقوى بـ 5 أضعاف من مضاعفة جرعة دواء واحد). والأهم إن إيربيسارتان محقق <strong>70% RRR</strong> في دراسة <strong>IRMA 2</strong> لمنع تطور اعتلال الكلى السكري المبكر، ومش بيحتاج أي تعديل في الجرعة مع السن أو وظائف الكلى."<br><br>` +
+                `<strong>3. الرد على سؤال الطبيب (لو قال: أبدأ بـ Metformin الأول؟):</strong><br>` +
+                `"الاتنين مهمين طبعاً يا دكتور، بس التحكم المبكر في الضغط لمرضى السكر اللي عندهم Microalbuminuria ضروري جداً لحماية الكلى والقلب على المدى الطويل، وإكس-تنشن بلس بيعالج الضغط ويحمي الكلى في قرص واحد يومياً."`;
+            }
+
+            // Case 2: 50yo Active Male on Beta-Blocker with Asthenia & ED
+            if (q.includes("50") || q.includes("beta") || q.includes("asthenia") || q.includes("إرهاق") || q.includes("بيتا")) {
+                return `<strong>⚡ سيناريو المكالمة الدعائية (مريض 50 سنة نشيط يعاني من Beta-Blocker):</strong><br><br>` +
+                `<strong>1. لماذا التحويل إلى X-Tension أو X-Tension Plus؟</strong><br>` +
+                `• <strong>لا يسبب وهن أو إرهاق (No Asthenia):</strong> يحافظ على النشاط البدني والرياضي للمريض عكس الـ Beta-Blockers.<br>` +
+                `• <strong>يحسن الوظيفة الجنسية (Improves Sexual Function):</strong> يتفادى مشكلة الـ Erectile Dysfunction الشائعة مع الـ Beta-Blockers.<br>` +
+                `• <strong>أمان تام مع السكر والربو:</strong> لا يسبب تشنج القصبات الهوائية (<strong>No Bronchospasm</strong>) ولا يخفي أعراض هبوط السكر (<strong>Does not mask Hypoglycemia</strong>).<br><br>` +
+                `<strong>2. الإغلاق البيعي (Closing):</strong><br>` +
+                `"إذن يا دكتور، للمريض النشيط اللي ضغطه لسه 145/90 على Beta-Blocker وبيعاني من إرهاق أو مشاكل في الوظيفة الجنسية، تحويله لـ <strong>إكس-تنشن</strong> هيضمنله تحكم أقوى في الضغط على مدار 24 ساعة مع استعادة جودة حياته."`;
+            }
+
+            // Case 3: 58yo Grade 1 HTN
+            if (q.includes("58") || q.includes("درجة 1") || q.includes("monotherapy")) {
+                return `<strong>🎯 سيناريو المكالمة الدعائية (مريض 58 سنة — Grade 1 HTN بدون مضاعفات):</strong><br><br>` +
+                `• حسب إرشادات <strong>ESC Guidelines</strong>، مسموح بالبدء بـ <strong>Monotherapy</strong> في مرضى <strong>Low-risk Grade 1 HTN (SBP &lt; 150 mmHg)</strong>.<br>` +
+                `• <strong>إكس-تنشن 150 مجم</strong> يوفر تحكم مستمر لمدة 24 ساعة بفضل فترة عمر النصف (<strong>11–15 ساعة</strong>)، مع أعلى معدل التزام واستمرارية للمرضى (<strong>60.8% Persistence Rate</strong> في دراسة الـ 170,000 مريض) لأنه بدون آثار جانبية مزعجة.`;
+            }
+
+            // Case 4: 70yo Female with Gout
+            if (q.includes("70") || q.includes("نقرس") || q.includes("gout")) {
+                return `<strong>🩺 التعامل مع مريضة 70 سنة (ضغط غير متحكم فيه 155/90 + تاريخ نقرس Gout):</strong><br><br>` +
+                `• في حالات الضغط المقاوم للعلاج الثنائي، إرشادات الـ ESC توصي بالتقوية؛ وإيربيسارتان لا يحتاج أي تعديل للجرعة في كبار السن (70 سنة).<br>` +
+                `• <strong>بخصوص النقرس (Gout) والـ HCTZ:</strong> مدرات الثيازايد قد ترفع حمض البوليك (Hyperuricemia)، لكن التركيز المنخفض <strong>12.5 مجم</strong> في إكس-تنشن بلس يمكن استخدامه مع المتابعة إذا كان النقرس متحكماً فيه، أو يمكن استخدام <strong>X-Tension 300 mg</strong> الأحادي مع الـ CCB لتفادي المدر تماماً مع الحصول على أقوى غلق لمستقبلات AT1.`;
+            }
+
+            // Clinical Trials: IRMA 2, IDNT, COSIMA
+            if (q.includes("irma") || q.includes("idnt") || q.includes("cosima") || q.includes("دراسات") || q.includes("كلى")) {
+                return `<strong>🧬 الأدلة الإكلينيكية الحاسمة لعائلة X-Tension & X-Tension Plus:</strong><br>` +
+                `<table class="ai-table">` +
+                `<thead><tr><th>الدراسة</th><th>تصميم الدراسة والمرضى</th><th>النتيجة الإكلينيكية لـ Irbesartan</th></tr></thead>` +
+                `<tbody>` +
+                `<tr><td><strong>IRMA 2</strong><br>(Early Nephropathy)</td><td>590 مريض ضغط وسكر نوع 2 مع <strong>Microalbuminuria</strong> لمدة سنتين</td><td>حقق تركيز 300 مجم <strong>70% RRR</strong> (p=0.0004) في منع التدهور لـ Overt Nephropathy</td></tr>` +
+                `<tr><td><strong>IDNT</strong><br>(Late Nephropathy)</td><td>1715 مريض ضغط وسكر مع <strong>Proteinuria &gt;900 mg/day</strong> لمدة 2.6 سنة</td><td>تفوق بـ <strong>23% RRR ضد Amlodipine 10mg</strong> (p=0.006) و<strong>20% RRR ضد البلاسيبو</strong></td></tr>` +
+                `<tr><td><strong>COSIMA</strong><br>(BP Control)</td><td>464 مريض ضغط غير متحكم فيه لمدة 8 أسابيع بالقياس المنزلي HBPM</td><td>تفوق <strong>X-Tension Plus 150/12.5</strong> على Valsartan/HCTZ 80/12.5 (-11.9 مقابل -9.6 صباحاً)</td></tr>` +
+                `</tbody></table>` +
+                `• <strong>الرسالة الأساسية للدكتور:</strong> إيربيسارتان هو الـ ARB الوحيد اللي معاه الدليل الكامل في المراحل المبكرة (IRMA 2) والمتأخرة (IDNT) لاعتلال الكلى السكري!`;
+            }
+
+            // Competitors & Pricing Table
+            if (q.includes("منافس") || q.includes("سعر") || q.includes("أسعار") || q.includes("tareg") || q.includes("aprovel") || q.includes("جدول")) {
+                return `<strong>🛡️ جدول مقارنة X-Tension و X-Tension Plus أمام المنافسين في السوق المصري:</strong><br>` +
+                `<table class="ai-table">` +
+                `<thead><tr><th>المنتج والشركة</th><th>المادة الفعالة والتركيز</th><th>حجم العبوة</th><th>السعر الرسمي</th></tr></thead>` +
+                `<tbody>` +
+                `<tr><td><strong>X-Tension (Rameda)</strong></td><td>Irbesartan 150 mg / 300 mg</td><td><strong>28 قرص مقسوم</strong></td><td><strong>76 جنيه / 89.75 جنيه</strong></td></tr>` +
+                `<tr><td><strong>X-Tension Plus (Rameda)</strong></td><td>Irbesartan/HCTZ 150/12.5 & 300/12.5</td><td><strong>28 قرص مقسوم</strong></td><td><strong>102 جنيه / 108 جنيه</strong></td></tr>` +
+                `<tr><td>Aprovel / CoAprovel</td><td>Irbesartan 150 / 300 mg</td><td>14 قرص فقط</td><td>55 إلى 75 جنيه (لـ 14 قرص)</td></tr>` +
+                `<tr><td>Tareg / Co-Tareg</td><td>Valsartan 160 mg</td><td>28 قرص / 14 قرص</td><td>244 جنيه / 112 جنيه</td></tr>` +
+                `<tr><td>Atacand / Atacand Plus</td><td>Candesartan 16 mg</td><td>14 قرص فقط</td><td>85 جنيه / 131.75 جنيه</td></tr>` +
+                `</tbody></table>` +
+                `<strong>💡 نقاط التفوق البيعي:</strong><br>` +
+                `1. <strong>ضد Valsartan (Tareg):</strong> إكس-تنشن أقوى في الوصول للـ BP Goal في دراسة COSIMA، ومعتمد في الـ Diabetic Nephropathy بينما الفالسارتان غير معتمد.<br>` +
+                `2. <strong>القيمة الاقتصادية:</strong> عبوة راميدا تكفي <strong>28 يوم كاملين</strong> بتكلفة يومية أقل بكثير من عبوات الـ 14 قرص للمنافسين.`;
+            }
+
+            // Objection: "All ARBs are the same" or PK
+            if (q.includes("شبه بعض") || q.includes("arbs") || q.includes("pharmacokinetic") || q.includes("كبد") || q.includes("تعديل")) {
+                return `<strong>🔬 ليه X-Tension (Irbesartan) متفوق علمياً على باقي عائلة الـ ARBs؟</strong><br><br>` +
+                `1. <strong>أعلى ارتباط بمستقبلات AT1 (Lowest Kd Value):</strong> يمتلك إيربيسارتان أعلى Affinity لغلق مستقبلات AT1 وسط الـ 8 ARBs (أكثر من <strong>8500 ضعف</strong> لـ AT1 مقارنة بـ AT2).<br>` +
+                `2. <strong>أعلى توافر حيوي (Highest Bioavailability 60–80%):</strong> لا يتأثر بالطعام إطلاقاً، ويصل لأعلى تركيز في البلازما (<strong>Tmax</strong>) خلال <strong>1.5 إلى 2 ساعة</strong>.<br>` +
+                `3. <strong>إخراج مزدوج فريد (Dual Excretion):</strong> يخرج <strong>80% عن طريق الصفراء/البراز (Biliary)</strong> و<strong>20% فقط عن طريق الكلى (Renal)</strong>، وأكثر من 80% منه يدور بدون تغيير.<br>` +
+                `4. <strong>لا يحتاج أي تعديل للجرعة:</strong> آمن تماماً بدون تعديل جرعة في مرضى الكبد، مرضى الكلى (حتى الغسيل الكلوي Hemodialysis)، وكبار السن.`;
+            }
+
+            // Default comprehensive response
+            return `<strong>أهلاً بيك يا دكتور في AIM (Ramada Medical AI Assistant)! 💙</strong><br><br>` +
+            `بناءً على الملف العلمي لعائلة <strong>X-Tension® & X-Tension Plus®</strong> من راميدا:<br>` +
+            `• <strong>رسالة التموضع الأساسية:</strong> يوفر X-Tension (Plus) تحكماً فائقاً في ضغط الدم للوصول إلى الهدف (<strong>&lt;130/80 mmHg</strong>) مقارنة بباقي الـ ARBs، حيث يصل <strong>8 من كل 10 مرضى</strong> للهدف العلاجي.<br>` +
+            `• <strong>حماية الكلى المثبتة:</strong> دراسة <strong>IRMA 2</strong> (70% RRR في المرحلة المبكرة) ودراسة <strong>IDNT</strong> (23% RRR ضد Amlodipine في المرحلة المتأخرة).<br>` +
+            `• <strong>الأسعار الرسمية (عبوة 28 قرص مقسوم):</strong> 150 مجم بـ <strong>76 ج</strong> | 300 مجم بـ <strong>89.75 ج</strong> | بلس 150/12.5 بـ <strong>102 ج</strong> | بلس 300/12.5 بـ <strong>108 ج</strong>.<br><br>` +
+            `تحب نراجع سيناريو مكالمة دكتور معينة ولا مقارنة مع منافس محدد؟`;
+        }
+
+        // --- 3. CHAT MESSAGE HANDLING & OPTIONAL GEMINI API ---
+        function handleChatKeyPress(e) {
+            if (e.key === "Enter") sendMessage();
+        }
+
+        function sendQuickMessage(text) {
+            document.getElementById("user-input").value = text;
+            // Close mobile sidebar if open
+            document.getElementById("sidebar-panel").classList.remove("open");
+            sendMessage();
+        }
+
+        async function sendMessage() {
+            const inputEl = document.getElementById("user-input");
+            const text = inputEl.value.trim();
+            if (!text) return;
+
+            // Hide welcome hero once conversation starts
+            const hero = document.getElementById("welcome-hero");
+            if (hero) hero.style.display = "none";
+
+            appendUserMessage(text);
+            inputEl.value = "";
+
+            const typingId = showTypingBubble();
+
+            // Check if custom Gemini API key is configured
+            if (userGeminiKey && userGeminiKey.length > 10) {
+                try {
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${userGeminiKey}`;
+                    const response = await fetch(apiUrl, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: text }] }],
+                            systemInstruction: { parts: [{ text: RAMEDA_SYSTEM_PROMPT }] }
+                        })
+                    });
+                    const data = await response.json();
+                    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                    removeTypingBubble(typingId);
+                    if (reply) {
+                        appendAIMessage(reply.replace(/\n/g, "<br>"));
+                        return;
+                    }
+                } catch (err) {
+                    // Fallback seamlessly to built-in Rameda engine
+                }
+            }
+
+            setTimeout(() => {
+                removeTypingBubble(typingId);
+                const smartReply = generateExpertRamedaResponse(text);
+                appendAIMessage(smartReply);
+            }, 850);
+        }
+
+        function appendUserMessage(text) {
+            const list = document.getElementById("messages-list");
+            const row = document.createElement("div");
+            row.className = "msg-row user";
+            row.innerHTML = `
+                <div class="avatar-badge avatar-user font-en">DR</div>
+                <div class="bubble-card bubble-user">${escapeHtml(text)}</div>
+            `;
+            list.appendChild(row);
+            scrollToBottom();
+        }
+
+        function appendAIMessage(htmlContent) {
+            const list = document.getElementById("messages-list");
+            const row = document.createElement("div");
+            row.className = "msg-row ai";
+            row.innerHTML = `
+                <div class="avatar-badge avatar-ai font-en">AIM</div>
+                <div class="bubble-card bubble-ai">${htmlContent}</div>
+            `;
+            list.appendChild(row);
+            scrollToBottom();
+        }
+
+        function showTypingBubble() {
+            const list = document.getElementById("messages-list");
+            const id = "typing-" + Date.now();
+            const row = document.createElement("div");
+            row.id = id;
+            row.className = "msg-row ai";
+            row.innerHTML = `
+                <div class="avatar-badge avatar-ai font-en">AIM</div>
+                <div class="bubble-card bubble-ai">
+                    <div class="typing-indicator"><span></span><span></span><span></span></div>
+                </div>
+            `;
+            list.appendChild(row);
+            scrollToBottom();
+            return id;
+        }
+
+        function removeTypingBubble(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+
+        function resetChatSession() {
+            document.getElementById("messages-list").innerHTML = "";
+            const hero = document.getElementById("welcome-hero");
+            if (hero) hero.style.display = "block";
+            document.getElementById("sidebar-panel").classList.remove("open");
+        }
+
+        function scrollToBottom() {
+            const box = document.getElementById("chat-box");
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>"']/g, function(m) {
+                return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m];
+            });
+        }
+
+        // --- 4. API KEY MODAL ---
+        function openApiModal() {
+            document.getElementById("api-modal").classList.remove("hidden");
+            document.getElementById("api-modal").classList.add("flex");
+        }
+        function closeApiModal() {
+            document.getElementById("api-modal").classList.add("hidden");
+            document.getElementById("api-modal").classList.remove("flex");
+        }
+        function saveApiKey() {
+            const val = document.getElementById("gemini-key-input").value.trim();
+            userGeminiKey = val;
+            const badge = document.getElementById("api-status-badge");
+            if (val) {
+                badge.textContent = "Gemini Live";
+                badge.className = "px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-en";
+            } else {
+                badge.textContent = "Built-in Ready";
+            }
+            closeApiModal();
+        }
+
+        // --- 5. 3-FILE GITHUB EXPORTER MODAL ---
+        function getClean3Files() {
+            const cssContent = document.getElementById("aim-style-css").innerHTML.trim();
+            const jsContent = document.getElementById("aim-script-js").innerHTML.trim();
+            const bodyClone = document.body.cloneNode(true);
+            const scriptInClone = bodyClone.querySelector("#aim-script-js");
+            if (scriptInClone) scriptInClone.remove();
+
+            const htmlContent = `<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramada Medical AI Assistant | AIM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"><\/script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+${bodyClone.innerHTML.trim()}
+    <script src="script.js"><\/script>
+</body>
+</html>`;
+            return { html: htmlContent, css: cssContent, js: jsContent };
+        }
+
+        function openExportModal() {
+            document.getElementById("export-modal").classList.remove("hidden");
+            document.getElementById("export-modal").classList.add("flex");
+            switchExportTab("html");
+        }
+
+        function closeExportModal() {
+            document.getElementById("export-modal").classList.add("hidden");
+            document.getElementById("export-modal").classList.remove("flex");
+        }
+
+        function switchExportTab(tab) {
+            currentExportTab = tab;
+            const files = getClean3Files();
+            document.getElementById("export-code-area").value = files[tab];
+
+            ["html", "css", "js"].forEach(t => {
+                const btn = document.getElementById("tab-btn-" + t);
+                if (t === tab) {
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-extrabold bg-sky-600 text-white font-en";
+                } else {
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-extrabold bg-sky-100 text-sky-900 font-en";
+                }
+            });
+        }
+
+        function copyExportCode() {
+            const area = document.getElementById("export-code-area");
+            area.select();
+            document.execCommand("copy");
+            const btn = document.getElementById("copy-export-btn");
+            btn.textContent = "✅ Copied " + currentExportTab.toUpperCase() + "!";
+            setTimeout(() => {
+                btn.textContent = "📋 Copy This File";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
