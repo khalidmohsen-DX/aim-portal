@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIM - Rameda AI Medical Assistant</title>
+    <title>AIM AI tool for ramada</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,35 +20,42 @@
         </div>
     </div>
 
-    <!-- SCREEN 2: The Main Chat Application (Hidden by default) -->
+    <!-- SCREEN 2: The Modern AI Chat Interface -->
     <div id="chat-screen" class="app-container" style="display: none;">
-        <header class="rameda-header">
-            <div class="logo-area">
-                <h1>rameda</h1>
-                <span class="slogan">Quality For All</span>
+        
+        <header class="ai-header">
+            <div class="header-content">
+                <div class="logo">rameda</div>
+                <div class="ai-status">
+                    <span class="status-dot"></span> AIM Online
+                </div>
             </div>
-            <div class="app-title">AIM Medical Assistant</div>
         </header>
 
-        <!-- Medical Image Section -->
-        <div class="profile-card">
-            <!-- You can replace this link with your actual picture of the medical bill/pill -->
-            <img src="https://via.placeholder.com/150x150.png?text=Medical+Bill" alt="Medical Image" class="avatar">
-        </div>
-
-        <div class="quick-actions">
-            <button onclick="sendQuickMessage('محاكاة مكالمة دعائية: مريضة 65 سنة عندها سكر وضغط')">محاكاة مكالمة دكتور</button>
-            <button onclick="sendQuickMessage('ما هي مميزات إكس-تنشن مقارنة بـ Beta-blockers؟')">مقارنة المنافسين</button>
-            <button onclick="sendQuickMessage('اشرح لي نتائج دراسة IRMA 2 و IDNT')">الدراسات الإكلينيكية</button>
-        </div>
-
         <div class="chat-container" id="chat-box">
-            <!-- Chat will load here -->
+            <!-- AI Empty State / Welcome Screen -->
+            <div class="welcome-screen" id="welcome-screen">
+                <div class="ai-sparkle">✨</div>
+                <h2>أهلاً بيك يا دكتور</h2>
+                <p>أنا AIM، مساعدتك الطبية من راميدا. جاهزة لمناقشة ملفات X-Tension.</p>
+                
+                <div class="suggestion-chips">
+                    <button onclick="sendQuickMessage('مريضة 65 سنة، سكر وضغط (الدرجة 2) وبداية اعتلال كلى. إيه دور إكس-تنشن بلس؟')">مريضة 65 سنة (سكر وضغط)</button>
+                    <button onclick="sendQuickMessage('مريض 50 سنة بياخد Beta Blocker وبيشتكي من إرهاق (Asthenia).')">مريض 50 سنة (إرهاق من أدوية أخرى)</button>
+                    <button onclick="sendQuickMessage('اشرح لي نتائج دراسة IRMA 2 و IDNT')">نتائج IRMA 2 و IDNT</button>
+                </div>
+            </div>
+            <!-- Messages will be injected here -->
         </div>
 
         <div class="input-container">
-            <input type="text" id="user-input" placeholder="اكتب سؤالك أو السيناريو هنا..." onkeypress="handleKeyPress(event)">
-            <button class="send-btn" onclick="sendMessage()">إرسال</button>
+            <div class="input-wrapper">
+                <input type="text" id="user-input" placeholder="اكتب سؤالك أو السيناريو هنا..." onkeypress="handleKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+            <div class="disclaimer">AIM can make mistakes. Verify medical claims.</div>
         </div>
     </div>
 
