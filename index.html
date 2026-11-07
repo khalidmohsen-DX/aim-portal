@@ -609,15 +609,12 @@
 
             <!-- Error Message -->
             <div id="error-msg" class="hidden mt-4 text-sm font-bold text-red-600 bg-red-50 border border-red-200 rounded-xl py-2.5 px-4 max-w-md mx-auto">
-                Invalid Access Password. Please enter the authorized Rameda PIN (2026).
+                Invalid Access Password. Please contact your authorized Rameda administrator.
             </div>
 
             <!-- Subtle Footer Info -->
-            <div class="mt-8 pt-5 border-t border-sky-200/70 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold text-sky-800/75 font-en">
-                <span>🔒 Protected MVP Access Gate (PIN: 2026)</span>
-                <button onclick="openExportModal()" class="underline hover:text-sky-950 font-bold cursor-pointer">
-                    📦 Copy 3 GitHub Files (HTML/CSS/JS)
-                </button>
+            <div class="mt-8 pt-5 border-t border-sky-200/70 flex items-center justify-center gap-2 text-xs font-semibold text-sky-800/75 font-en">
+                <span>🔒 Protected Corporate Access Gate • Authorized Personnel Only</span>
             </div>
         </div>
     </div>
@@ -723,15 +720,17 @@
                 </div>
             </div>
 
-            <!-- Sidebar Footer: API Key Vault & 3-File Exporter -->
-            <div class="p-4 border-t border-sky-200/70 bg-sky-50/60 space-y-2">
-                <button onclick="openApiModal()" class="w-full py-2.5 px-3 rounded-xl bg-white hover:bg-sky-100 border border-sky-300 text-xs font-bold text-sky-900 flex items-center justify-between transition">
-                    <span>🔑 ربط مفتاح Gemini API (اختياري)</span>
-                    <span id="api-status-badge" class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-en">Built-in Ready</span>
-                </button>
-                <button onclick="openExportModal()" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center justify-center gap-2 transition">
-                    <span>📋 نسخ ملفات GitHub الـ 3 (HTML/CSS/JS)</span>
-                </button>
+            <!-- Sidebar Footer: Clean Corporate Status (API & Source Exporter Hidden) -->
+            <div class="p-4 border-t border-sky-200/70 bg-sky-50/60 text-center">
+                <div class="text-[11px] font-bold text-sky-900/75 font-en">
+                    Rameda Medical Affairs • Quality For All
+                </div>
+                <div class="hidden">
+                    <button onclick="openApiModal()">
+                        <span id="api-status-badge">Built-in Ready</span>
+                    </button>
+                    <button onclick="openExportModal()"></button>
+                </div>
             </div>
         </aside>
 
