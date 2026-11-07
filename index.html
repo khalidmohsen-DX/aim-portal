@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIM - Rameda AI Medical Assistant</title>
-    <!-- Premium Arabic Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Top Branding Header -->
+
+    <!-- SCREEN 1: The Secure Login Gate -->
+    <div id="login-screen" class="login-container">
+        <div class="login-box">
+            <h1>Ramada Medical AI Assistant</h1>
+            <p class="slogan">Innovation is the Future</p>
+            <input type="password" id="access-pin" placeholder="Enter Access Password..." onkeypress="handleLoginPress(event)">
+            <button class="login-btn" onclick="verifyLogin()">Enter Portal</button>
+            <p id="error-msg" class="error-text" style="display: none;">كلمة المرور غير صحيحة</p>
+        </div>
+    </div>
+
+    <!-- SCREEN 2: The Main Chat Application (Hidden by default) -->
+    <div id="chat-screen" class="app-container" style="display: none;">
         <header class="rameda-header">
             <div class="logo-area">
                 <h1>rameda</h1>
@@ -19,32 +30,25 @@
             <div class="app-title">AIM Medical Assistant</div>
         </header>
 
-        <!-- AIM Profile & Welcome -->
+        <!-- Medical Image Section -->
         <div class="profile-card">
-            <!-- Replace the src link below with your actual hosted image of AIM -->
-            <img src="https://via.placeholder.com/120x120.png?text=AIM" alt="AIM" class="avatar">
-            <h2>أهلاً بيك يا دكتور، أنا AIM</h2>
-            <p>مساعدتك الطبية والتسويقية لعائلة X-Tension. جاهزة للرد على استفساراتك أو محاكاة مكالمة دعائية.</p>
+            <!-- You can replace this link with your actual picture of the medical bill/pill -->
+            <img src="https://via.placeholder.com/150x150.png?text=Medical+Bill" alt="Medical Image" class="avatar">
         </div>
 
-        <!-- Smart Quick Actions -->
         <div class="quick-actions">
             <button onclick="sendQuickMessage('محاكاة مكالمة دعائية: مريضة 65 سنة عندها سكر وضغط')">محاكاة مكالمة دكتور</button>
             <button onclick="sendQuickMessage('ما هي مميزات إكس-تنشن مقارنة بـ Beta-blockers؟')">مقارنة المنافسين</button>
             <button onclick="sendQuickMessage('اشرح لي نتائج دراسة IRMA 2 و IDNT')">الدراسات الإكلينيكية</button>
         </div>
 
-        <!-- Chat Interface -->
         <div class="chat-container" id="chat-box">
-            <!-- Messages will load here -->
+            <!-- Chat will load here -->
         </div>
 
-        <!-- Input Area -->
         <div class="input-container">
             <input type="text" id="user-input" placeholder="اكتب سؤالك أو السيناريو هنا..." onkeypress="handleKeyPress(event)">
-            <button class="send-btn" onclick="sendMessage()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
+            <button class="send-btn" onclick="sendMessage()">إرسال</button>
         </div>
     </div>
 
